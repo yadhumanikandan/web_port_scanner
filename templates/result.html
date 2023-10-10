@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Scan result for {{hostname1}}</h1>
+    <p>
+        {% for i in portsh %}
+            <p>Port {{i}} is open</p>
+        {% endfor %}
+    </p>
+    <h1>WHOIS</h1>
+    <p>
+        {% for key, value in whoisinfo1.items() %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %} 
+    </p>
+</body>
+</html>
