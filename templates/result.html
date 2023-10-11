@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{ url_for('logout') }}">Logout</a>
     <h1>Scan result for {{hostname1}}</h1>
     <p>
         {% for i in portsh %}
