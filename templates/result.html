@@ -19,5 +19,14 @@
             <li>{{ key }}: {{ value }}</li>
         {% endfor %} 
     </p>
+    <h1>NSLOOKUP</h1>
+    <p>
+        <li>IP Adress: {{nsl1[1]}}</li>
+        <li>{{nsl1[0]}}</li>
+        
+        {% for item in nsl2 %}
+            <li>{{item}}</li>
+        {% endfor %}
+    </p>
 </body>
 </html>

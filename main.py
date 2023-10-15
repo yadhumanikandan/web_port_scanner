@@ -71,10 +71,10 @@ def scan():
         hostname = request.form["host"]
         
         # print(hostname)
-        open_ports, whoisinfo = scanPorts(hostname)
+        open_ports, whoisinfo, nslookup1, nslookup2 = scanPorts(hostname)
         # print(open_ports)
         
-        return render_template("result.html", portsh=open_ports, whoisinfo1=whoisinfo, hostname1=hostname)
+        return render_template("result.html", portsh=open_ports, whoisinfo1=whoisinfo, hostname1=hostname, nsl1 = nslookup1, nsl2 = nslookup2)
     else:
         return render_template("scan.html")
     

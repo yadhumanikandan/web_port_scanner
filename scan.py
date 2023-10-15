@@ -5,6 +5,7 @@ import sys
 from queue import Queue
 from datetime import datetime
 import whois
+from nslookup import Nslookup
 
 
 def scanPorts(target1):
@@ -17,6 +18,24 @@ def scanPorts(target1):
    whoisinfo = whois.whois(target1)
 
    ####    whois   #####
+
+   ####    nslookup   ####
+
+
+   dns_query = Nslookup()
+   # Alternatively, the Nslookup constructor supports optional
+   # arguments for setting custom dns servers (defaults to system DNS),
+   # verbosity (default: True) and using TCP instead of UDP (default: False)
+   dns_query = Nslookup(dns_servers=["1.1.1.1"], verbose=False, tcp=False)
+
+   ips_record = dns_query.dns_lookup(target1)
+   ns1 = [ips_record.response_full, ips_record.answer]
+
+   soa_record = dns_query.soa_lookup(target1)
+   ns2 = [soa_record.response_full, soa_record.answer]
+
+
+   #### nslookup    ####
     
 
 
@@ -71,7 +90,7 @@ def scanPorts(target1):
 
    t3 = datetime.now()
    total1 = t3 - t1
-   return discovered_ports, whoisinfo
+   return discovered_ports, whoisinfo, ns1, ns2
 
 
 # target = "google.com" 
